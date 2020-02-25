@@ -1,0 +1,19 @@
+       01 FD-REG-SOCIO.
+           03 FRS-TIPO-REGISTRO          PIC 9.
+           03 FRS-IND-FULL-DIARIO        PIC X.
+           03 FRS-TIPO-ATUALIZACAO       PIC X.
+           03 FRS-CNPJ                   PIC 9(014).
+           03 FRS-IDENTIFICADOR-SOCIO    PIC 9.
+           03 FRS-NOME-SOCIO             PIC X(150).
+           03 FRS-CPF-SOCIO              PIC 9(014).
+           03 FRS-COD-QUALIFICACAO-SOCIO PIC XX.
+           03 FRS-PERCENTUAL-CAPITAL     PIC 9(005).
+           03 FRS-DATA-ENTRADA-SOCIEDADE PIC 9(008).
+           03 FRS-CODIGO-PAIS            PIC XXX.
+           03 FRS-NOME-PAIS-SOCIO        PIC X(070).
+           03 FRS-CPF-REPRESENTANTE      PIC 9(011).
+           03 FRS-NOME-REPRESENTANTE     PIC X(060).
+           03 FRS-COD-QUALIFICACAO-REP   PIC XX.
+           03 FRS-COD-SOCIO              PIC 9(011).
+           03 FILLER                     PIC X(844).
+           03 FRS-FIM-REGISTRO           PIC X.

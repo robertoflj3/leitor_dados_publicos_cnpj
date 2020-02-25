@@ -1,0 +1,68 @@
+01EXTINÇÃO POR ENCERRAMENTO LIQUIDAÇÃO VOLUNTÁRIA                                         
+02INCORPORAÇÃO                                                                            
+03FUSÃO                                                                                   
+04CISÃO TOTAL                                                                             
+05ENCERRAMENTO DA FALÊNCIA                                                                
+06ENCERRAMENTO DA LIQUIDAÇÃO                                                              
+07ELEVAÇÃO A MATRIZ                                                                       
+08TRANSPASSE                                                                              
+09NÃO INÍCIO DE ATIVIDADE                                                                 
+10EXTINÇÃO PELO ENCERRAMENTO DA LIQUIDAÇÃO JUDICIAL                                       
+11ANULAÇÃO POR MULTICIPLIDADE                                                             
+12ANULAÇÃO ONLINE DE OFICIO                                                               
+13OMISSA CONTUMAZ                                                                         
+14OMISSA NÃO LOCALIZADA                                                                   
+15INEXISTENTE DE FATO                                                                     
+16ANULAÇÃO POR VÍCIOS                                                                     
+17BAIXA INICIADA E AINDA NÃO DEFERIDA                                                     
+18INTERRUPÇÃO TEMPORÁRIA DAS ATIVIDADES                                                   
+19OMISSO DE DIRPJ ATÉ 5 EXERCÍCIOS                                                        
+20EM CONDIÇÃO DE INAPTIDÃO                                                                
+21PEDIDO DE BAIXA INDEFERIDA                                                              
+22RESTABELECIMENTO COM CERTIDÃO POSITIVA COM EFEITO DE NEGATIVA                           
+23COM PENDÊNCIA FISCAL                                                                    
+24POR EMISSÃO CERTIDÃO NEGATIVA                                                           
+25CERTIDÃO POSITIVA COM EFEITO DE NEGATIVA                                                
+26IRREGULARIDADE DE PAGAMENTO                                                             
+27IRREGULARIDADE DE RECOLHIMENTO E EXIGIBILIDADE SUSPENSA                                 
+28TRANSFERÊNCIA FILIAL CONDIÇÃO MATRIZ                                                 
+29AGUARDANDO CONF. DE DIRPJ/DIPJ                                                          
+30ANR - AGUARDANDO CONF. DE DIRPJ/DIPJ                                                    
+31EXTINÇÃO DA FILIAL                                                                      
+32INEXISTENTE DE FATO – ADE/COSAR                                                         
+33TRANSFERÊNCIA DO ÓRGÃO LOCAL A CONDIÇÃO DE FILIAL DO ÓRGÃO REGIONAL                     
+34ANULAÇÃO DE INSCRIÇÃO INDEVIDA                                                          
+35EMPRESA ESTRANGEIRA AGUARDANDO DOCUMENTAÇÃO                                             
+36PRÁTICA IRREGULAR DE OPERAÇÃO DE COMERCIO EXTERIOR                                      
+37BAIXA DE PRODUTOR RURAL                                                                 
+38BAIXA DEFERIDA PELA RFB AGUARDANDO ANALISE DO CONVENENTE                                
+39BAIXA DEFERIDA PELA RFB E INDEFERIDA PELO CONVENENTE                                    
+40BAIXA INDEFERIDA PELA RFB E AGUARDANDO ANALISE DO CONVENENTE                            
+41BAIXA INDEFERIDA PELA RFB E DEFERIDA PELO CONVENENTE                                    
+42BAIXA INDEFERIDA PELA RFB E SEFIN                                                       
+43BAIXA DEFERIDA PELA RFB                                                                 
+44BAIXA DEFERIDA PELA RFB E SEFAZ                                                         
+45BAIXA DEFERIDA PELA RFB                                                                 
+46BAIXA DEFERIDA PELA RFB E SEFAZ E INDEFERIDA PELA SEFIN                                 
+47BAIXA DEFERIDA PELA RFB E SEFIN E INDEFERIDA PELA SEFAZ                                 
+48BAIXA INDEFERIDA PELA RFB                                                               
+49BAIXA INDEFERIDA PELA RFB                                                               
+50BAIXA INDEFERIDA PELA RFB                                                               
+51BAIXA INDEFERIDA PELA RFB E SEFAZ                                                       
+52BAIXA INDEFERIDA PELA RFB                                                               
+53BAIXA INDEFERIDA PELA RFB E SEFAZ E DEFERIDA PELA SEFIN                                 
+54BAIXA - TRATAMENTO DIFERENCIADO DADO AS ME E EPP (LEI COMPLEMENTAR NUMERO 123/2006)     
+55DEFERIDO PELO CONVENENTE                                                                
+60ARTIGO 30                                                                               
+61INDICIO INTERPOS. FRAUDULENTA                                                           
+62FALTA DE PLURALIDADE DE SOCIOS                                                          
+63OMISSÃO DE DECLARAÇÕES                                                                  
+64LOCALIZAÇÃO DESCONHECIDA                                                                
+66INAPTIDÃO                                                                               
+67REGISTRO CANCELADO                                                                      
+70ANULAÇÃO POR NÃO CONFIRMADO ATO DE REGISTRO DO MEI NA JUNTA COMERCIAL                   
+71INAPTIDÃO (LEI 11.941/2009 ART.54)                                                      
+72DETERMINAÇÃO JUDICIAL                                                                   
+73OMISSÃO CONTUMAZ                                                                        
+74INCONSISTÊNCIA CADASTRAL                                                                
+80BAIXA REGISTRADA NA JUNTA                                                               
