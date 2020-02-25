@@ -14,5 +14,6 @@
            03 RRS-CPF-REPRESENTANTE      PIC 9(011).
            03 RRS-NOME-REPRESENTANTE     PIC X(060).
            03 RRS-COD-QUALIFICACAO-REP   PIC XX.
-           03 FILLER                     PIC X(855).
+           03 RRS-COD-SOCIO              PIC 9(011).
+           03 FILLER                     PIC X(844).
            03 RRS-FIM-REGISTRO           PIC X.

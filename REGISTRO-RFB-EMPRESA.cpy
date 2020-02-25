@@ -2,18 +2,30 @@
            03 RRE-TIPO-REGISTRO          PIC 9.
            03 RRE-INDICADOR-FULL-DIARIO  PIC X.
            03 RRE-TIPO-ATUALIZACAO       PIC X.
-           03 RRE-CNPJ                   PIC 9(014).
+           03 RRE-CNPJ.
+              05 CNPJ1                   PIC 9(002).
+              05 CNPJ2                   PIC 9(003).
+              05 CNPJ3                   PIC 9(003).
+              05 CNPJ4                   PIC 9(004).
+              05 CNPJ5                   PIC 9(002).
            03 RRE-IND-MATRIZ-FILIAL      PIC 9.
            03 RRE-RAZAO-SOCIAL           PIC X(150).
            03 RRE-NOME-FANTASIA          PIC X(055).
            03 RRE-SIT-CADASTRAL          PIC 99.
-           03 RRE-DATA-SIT-CADASTRAL     PIC 9(008).
+           03 RRE-DATA-SIT-CADASTRAL.
+              05 FILLER		         PIC XX.
+              05 DATA-SIT-AA             PIC 99.
+              05 DATA-SIT-MM             PIC 99.
+              05 DATA-SIT-DD             PIC 99.
            03 RRE-MOTIVO-SIT-CADASTRAL   PIC 99.
            03 RRE-NM-CIDADE-EXTERIOR     PIC X(055).
            03 RRE-CO-PAIS                PIC XXX.
            03 RRE-NM-PAIS                PIC X(070).
            03 RRE-COD-NAT-JURIDICA       PIC 9999.
-           03 RRE-DATA-INICIO-ATIVIDADE  PIC 9(008).
+           03 RRE-DATA-INICIO-ATIVIDADE.
+              05 DATA-INI-ATI-AAAA       PIC 9999.
+              05 DATA-INI-ATI-MM         PIC 99.
+              05 DATA-INI-ATI-DD         PIC 99.
            03 RRE-CNAE-FISCAL            PIC 9(007).
            03 RRE-TIPO-LOGRADOURO        PIC X(020).
            03 RRE-LOGRADOURO             PIC X(060).
