@@ -75,7 +75,7 @@
           05 VALUE '--------------------- *** LEITOR DE DADOS ABERTOS RF
       -     'B *** -----------------------'
            LINE 1 COL 1 FOREGROUND-COLOR IS 3.
-          05 VALUE '1 - BUSCAR PESSOA JURÍDICA.' LINE 4 COL 2
+          05 VALUE '1 - BUSCAR PESSOA JURIDICA.' LINE 4 COL 2
            FOREGROUND-COLOR IS 2.
       *    05 VALUE '2 - BUSCAR PESSOA FÍSICA.' LINE 5 COL 2
       *     FOREGROUND-COLOR IS 2.
@@ -87,7 +87,7 @@
           05 MSG-INPUT LINE 24 COL 2 FOREGROUND-COLOR IS 1
            FROM WS-MENSAGEM.
        01 SC-BUSCAR-PJ.
-          05 VALUE '--------------------- *** BUSCAR PESSOA JURÍDICA **
+          05 VALUE '--------------------- *** BUSCAR PESSOA JURIDICA **
       -     '*  ----------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
           05 VALUE '** ENTRE COM OS DADOS DE BUSCA E PRESSIONE ENTER **'
             LINE 2 COL 10 FOREGROUND-COLOR IS 3.
@@ -102,7 +102,7 @@
       -      'SOCIAL  V-VOLTAR'
            FOREGROUND-COLOR IS 3.
        01 SC-EXIBIR-PJ.
-          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURÍDIC
+          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDIC
       -     'A *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
           05 LINE 3 COL 2 VALUE 'CNPJ: ' FOREGROUND-COLOR IS 2.
           05 CNPJ-INPUT LINE 3 COL 8    FOREGROUND-COLOR IS 7
@@ -138,7 +138,7 @@
            FROM RRE-CO-PAIS.
           05 NMPAIS-INPUT LINE 9 COL 12 FOREGROUND-COLOR IS 7
            FROM RRE-NM-PAIS.
-          05 LINE 10 COL 2 VALUE 'NATUREZA JURÍDICA: '
+          05 LINE 10 COL 2 VALUE 'NATUREZA JURIDICA: '
            FOREGROUND-COLOR IS 2.
           05 NATJUR-INPUT LINE 10 COL 22 FOREGROUND-COLOR IS 7
            FROM RRE-COD-NAT-JURIDICA.
