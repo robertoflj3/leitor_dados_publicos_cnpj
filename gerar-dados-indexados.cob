@@ -176,6 +176,7 @@
        01 ST-ARQUIVO-EMP              PIC XX.
        01 WS-EOF                      PIC X VALUE 'N'.
        01 WS-COD-SOCIO                PIC 9(011) VALUE 1.    
+       01 WS-PASSO-ARQUIVO            PIC 9 VALUE 0.
 
        COPY "REGISTRO-RFB.cpy".
        COPY "REGISTRO-RFB-SOCIO.cpy".
@@ -187,258 +188,275 @@
            PERFORM 0002-ABRIR-ARQUIVO.
            GOBACK.
        0002-ABRIR-ARQUIVO.
-           OPEN OUTPUT ARQ-SOCIOS.
-           OPEN OUTPUT ARQ-EMPRESAS.
+           PERFORM 2 TIMES
+             ADD 1 TO WS-PASSO-ARQUIVO GIVING WS-PASSO-ARQUIVO
 
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00001 ...'
-           OPEN INPUT ARQ1.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 1 THEN
+                     DISPLAY 'EXECUTANDO PASSO 1/2 - EMPRESAS'
+                     OPEN OUTPUT ARQ-EMPRESAS
+             END-IF
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 2 THEN
+                     DISPLAY 'EXECUTANDO PASSO 2/2 - SOCIOS'
+                     OPEN OUTPUT ARQ-SOCIOS
+             END-IF
+
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00001 ...'
+             OPEN INPUT ARQ1
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ1
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ1 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ1.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00002 ...'
-           OPEN INPUT ARQ2.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ1
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00002 ...'
+             OPEN INPUT ARQ2
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ2
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ2 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ2.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00003 ...'
-           OPEN INPUT ARQ3.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ2
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00003 ...'
+             OPEN INPUT ARQ3
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ3
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ3 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ3.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00004 ...'
-           OPEN INPUT ARQ4.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ3
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00004 ...'
+             OPEN INPUT ARQ4
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ4
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ4 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ4.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00005 ...'
-           OPEN INPUT ARQ5.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ4
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00005 ...'
+             OPEN INPUT ARQ5
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ5
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ5 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ5.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00006 ...'
-           OPEN INPUT ARQ6.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ5
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00006 ...'
+             OPEN INPUT ARQ6
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ6
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ6 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ6.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00007 ...'
-           OPEN INPUT ARQ7.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ6
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00007 ...'
+             OPEN INPUT ARQ7
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ7
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ7 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ7.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00008 ...'
-           OPEN INPUT ARQ8.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ7
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00008 ...'
+             OPEN INPUT ARQ8
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ8
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ8 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ8.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00009 ...'
-           OPEN INPUT ARQ9.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ8
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00009 ...'
+             OPEN INPUT ARQ9
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ9
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ9 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ9.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00010 ...'
-           OPEN INPUT ARQ10.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ9
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00010 ...'
+             OPEN INPUT ARQ10
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ10
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ10 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ10.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00011 ...'
-           OPEN INPUT ARQ11.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ10
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00011 ...'
+             OPEN INPUT ARQ11
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ11
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ11 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ11.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00012 ...'
-           OPEN INPUT ARQ12.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ11
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00012 ...'
+             OPEN INPUT ARQ12
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ12
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ12 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ12.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00013 ...'
-           OPEN INPUT ARQ13.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ12
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00013 ...'
+             OPEN INPUT ARQ13
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ13
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ13 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ13.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00014 ...'
-           OPEN INPUT ARQ14.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ13
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00014 ...'
+             OPEN INPUT ARQ14
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ14
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ14 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ14.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00015 ...'
-           OPEN INPUT ARQ15.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ14
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00015 ...'
+             OPEN INPUT ARQ15
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ15
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ15 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ15.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00016 ...'
-           OPEN INPUT ARQ16.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ15
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00016 ...'
+             OPEN INPUT ARQ16
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ16
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ16 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ16.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00017 ...'
-           OPEN INPUT ARQ17.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ16
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00017 ...'
+             OPEN INPUT ARQ17
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ17
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ17 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ17.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00018 ...'
-           OPEN INPUT ARQ18.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ17
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00018 ...'
+             OPEN INPUT ARQ18
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ18
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ18 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ18.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00019 ...'
-           OPEN INPUT ARQ19.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ18
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00019 ...'
+             OPEN INPUT ARQ19
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ19
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ19 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ19.
-           MOVE 'N' TO WS-EOF.
-           DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00020 ...'
-           OPEN INPUT ARQ20.
-           PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
+             END-PERFORM
+             CLOSE ARQ19
+             MOVE 'N' TO WS-EOF
+             DISPLAY 'LENDO ARQUIVO K3241.K03200DV.D00124.L00020 ...'
+             OPEN INPUT ARQ20
+             PERFORM UNTIL WS-EOF IS EQUAL TO 'Y'
                    READ ARQ20
                    AT END MOVE 'Y' TO WS-EOF
                    NOT AT END PERFORM
                       MOVE FD-REG-ARQ20 TO REGISTRO-RFB
                       PERFORM 0003-GRAVAR-REGISTRO
                    END-PERFORM
-           END-PERFORM.
-           CLOSE ARQ20.
+             END-PERFORM
+             CLOSE ARQ20
 
-           CLOSE ARQ-SOCIOS.
-           CLOSE ARQ-EMPRESAS.
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 1 THEN
+                     CLOSE ARQ-EMPRESAS
+             END-IF
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 2 THEN
+                     CLOSE ARQ-SOCIOS
+             END-IF
+           END-PERFORM
            DISPLAY 'FIM DA GERACAO DOS ARQUIVOS.'.
        0003-GRAVAR-REGISTRO.
-           IF RRF-TIPO-REGISTRO IS EQUAL TO 2 THEN
+           IF RRF-TIPO-REGISTRO IS EQUAL TO 2 AND WS-PASSO-ARQUIVO IS
+                   EQUAL TO 2 THEN
                    MOVE REGISTRO-RFB TO REGISTRO-RFB-SOCIO
                    PERFORM 0004-GRAVAR-REGISTRO-SOCIO
            END-IF.
-           IF RRF-TIPO-REGISTRO IS EQUAL TO 1 THEN
+           IF RRF-TIPO-REGISTRO IS EQUAL TO 1 AND WS-PASSO-ARQUIVO IS
+                   EQUAL TO 1 THEN
                    MOVE REGISTRO-RFB TO REGISTRO-RFB-EMPRESA
                    PERFORM 0005-GRAVAR-REGISTRO-EMPRESA
            END-IF.
