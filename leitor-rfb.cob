@@ -102,8 +102,8 @@
       -      'SOCIAL  V-VOLTAR'
            FOREGROUND-COLOR IS 3.
        01 SC-EXIBIR-PJ.
-          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDIC
-      -     'A *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
+          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDICA
+      -     ' *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
           05 LINE 3 COL 2 VALUE 'CNPJ: ' FOREGROUND-COLOR IS 2.
           05 CNPJ-INPUT LINE 3 COL 8    FOREGROUND-COLOR IS 7
            FROM WS-CNPJ-ED.
