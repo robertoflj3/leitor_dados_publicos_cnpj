@@ -1,1 +1,0 @@
-cobenv && leitor-rfb.exe
