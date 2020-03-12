@@ -2,9 +2,6 @@
        PROGRAM-ID. leitor-rfb.
 
        ENVIRONMENT DIVISION.
-       CONFIGURATION SECTION.
-         SPECIAL-NAMES.
-           DECIMAL-POINT IS COMMA.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT ARQ-EMPRESAS ASSIGN TO "dados/empresas.dat"
@@ -64,7 +61,6 @@
        01 WS-COMPLEMENTO            PIC X(015).
        01 WS-PORTE                  PIC X(025).
        01 WS-OPCAO-SIMPLES          PIC X(020).
-       01 WS-CAPITAL-SOCIAL         PIC ZZZ.ZZZ.ZZZ.ZZ9,99.
 
        COPY 'REGISTRO-RFB-EMPRESA.cpy'.
 
@@ -106,8 +102,8 @@
       -      'SOCIAL  V-VOLTAR'
            FOREGROUND-COLOR IS 3.
        01 SC-EXIBIR-PJ.
-          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDIC
-      -     'A *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
+          05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDICA
+      -     ' *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
           05 LINE 3 COL 2 VALUE 'CNPJ: ' FOREGROUND-COLOR IS 2.
           05 CNPJ-INPUT LINE 3 COL 8    FOREGROUND-COLOR IS 7
            FROM WS-CNPJ-ED.
@@ -199,7 +195,7 @@
           05 LINE 19 COL 19 VALUE 'CAPITAL SOCIAL: ' FOREGROUND-COLOR IS
                2.
           05 CAPSOCIAL-INPUT LINE 19 COL 35 FOREGROUND-COLOR IS 7
-           FROM WS-CAPITAL-SOCIAL.
+           FROM RRE-CAPITAL-SOCIAL-EMP.
           05 LINE 20 COL 2 VALUE 'PORTE: ' FOREGROUND-COLOR IS 2.
           05 PORTE-INPUT LINE 20 COL 9 FOREGROUND-COLOR IS 7
            FROM WS-PORTE.
@@ -327,7 +323,6 @@
                     WHEN OTHER
                             INITIALIZE WS-OPCAO-SIMPLES
            END-EVALUATE.
-           MOVE RRE-CAPITAL-SOCIAL-EMP TO WS-CAPITAL-SOCIAL.
       **********************************************************
            DISPLAY SC-TELA-LIMPA.
            DISPLAY SC-EXIBIR-PJ.
