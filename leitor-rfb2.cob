@@ -7,6 +7,15 @@
            DECIMAL-POINT IS COMMA.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
+           SELECT ARQ-SOCIOS ASSIGN TO "DADOS/socios2teste.dat"
+                   ORGANIZATION INDEXED
+                   ACCESS MODE DYNAMIC
+                   RECORD KEY IS FRS-COD-SOCIO
+                   ALTERNATE RECORD KEY IS FRS-NOME-SOCIO WITH
+                   DUPLICATES
+                   ALTERNATE RECORD KEY IS FRS-CNPJ WITH DUPLICATES
+                   STATUS ST-ARQUIVO-SOCIO.
+
            SELECT ARQ-EMPRESAS ASSIGN TO "dados/empresas2teste.dat"
                    ORGANIZATION INDEXED
                    ACCESS MODE DYNAMIC
@@ -23,6 +32,9 @@
 
        DATA DIVISION.
        FILE SECTION.
+       FD ARQ-SOCIOS.
+           COPY "FD-REG-SOCIO.cpy".
+
        FD ARQ-EMPRESAS.
            COPY "FD-REG-EMPRESA.cpy".
 
@@ -70,8 +82,11 @@
        01 WS-CAPITAL-SOCIAL         PIC ZZZ.ZZZ.ZZZ.ZZ9,99.
        77 WS-CONTINUA-BUSCA         PIC X VALUE 'N'.
        77 WS-RAZAO-SOCIAL-BUSCA     PIC X(150) VALUE SPACES.
+       77 WS-CNPJ-BUSCA             PIC 9(014) VALUE ZEROES.
+       77 WS-NOME-SOCIO-BUSCA       PIC X(150) VALUE SPACES.
 
        COPY 'REGISTRO-RFB-EMPRESA.cpy'.
+       COPY 'REGISTRO-RFB-SOCIO.cpy'.
 
        SCREEN SECTION.
        01 SC-TELA-LIMPA BLANK SCREEN.
@@ -88,8 +103,8 @@
            LINE 1 COL 1 FOREGROUND-COLOR IS 3.
           05 VALUE '1 - BUSCAR PESSOA JURIDICA.' LINE 4 COL 2
            FOREGROUND-COLOR IS 2.
-      *    05 VALUE '2 - BUSCAR PESSOA FÍSICA.' LINE 5 COL 2
-      *     FOREGROUND-COLOR IS 2.
+          05 VALUE '2 - BUSCAR PESSOA FÍSICA.' LINE 5 COL 2
+           FOREGROUND-COLOR IS 2.
           05 VALUE 'S-SAIR'        LINE 24 COL 2 FOREGROUND-COLOR IS 3. 
 
        01 SC-ERRO-COMANDO.
@@ -111,11 +126,29 @@
           05 LINE 5 COL 2 VALUE 'RAZAO SOCIAL: ' FOREGROUND-COLOR IS 2.
           05 RAZAO-INPUT LINE 5 COL 17   FOREGROUND-COLOR IS 7
            FROM RRE-RAZAO-SOCIAL TO RRE-RAZAO-SOCIAL.
+       
+       01 SC-BUSCAR-PF.
+          05 VALUE '--------------------- *** BUSCAR PESSOA FISICA **
+      -     '*  ----------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
+          05 VALUE '** ENTRE COM OS DADOS DE BUSCA E PRESSIONE ENTER **'
+            LINE 2 COL 10 FOREGROUND-COLOR IS 3.
+          05 LINE 4 COL 2 VALUE 'CNPJ DA EMPRESA: '
+            FOREGROUND-COLOR IS 2.
+          05 CNPJ-EMPRESA-INPUT LINE 4 COL 19     FOREGROUND-COLOR IS 7
+           FROM FRS-CNPJ TO FRS-CNPJ.
+          05 LINE 5 COL 2 VALUE 'NOME DO SOCIO: ' FOREGROUND-COLOR IS 2.
+          05 NOME-SOCIO-INPUT LINE 5 COL 17   FOREGROUND-COLOR IS 7
+           FROM FRS-NOME-SOCIO TO FRS-NOME-SOCIO.
 
-       01 SC-MENU-BUSCA-PJ.
-          05 LINE 24 COL 2 VALUE '1-BUSCAR POR CNPJ  2-BUSCAR POR RAZAO
-      -      'SOCIAL  V-VOLTAR'
-           FOREGROUND-COLOR IS 3.
+      * 01 SC-MENU-BUSCA-PJ.
+      *    05 LINE 24 COL 2 VALUE '1-BUSCAR POR CNPJ  2-BUSCAR POR RAZAO
+      *-      'SOCIAL  V-VOLTAR'
+      *     FOREGROUND-COLOR IS 3.
+       
+      * 01 SC-MENU-BUSCA-PF.
+      *    05 LINE 24 COL 2 VALUE '1-BUSCAR POR CNPJ DA EMPRESA  2-BUSCAR
+      *-      ' POR NOME DO SOCIO V-VOLTAR'
+      *     FOREGROUND-COLOR IS 3.
 
        01 SC-EXIBIR-PJ.
           05 VALUE '------------------- *** LISTAR DADOS PESSOA JURIDICA
@@ -239,6 +272,14 @@
            FOREGROUND-COLOR IS 2.
           05 DTSITESPECIAL-INPUT LINE 23 COL 19 FOREGROUND-COLOR IS 7
            FROM RRE-DATA-SIT-ESPECIAL.          
+       
+       01 SC-EXIBIR-PF.
+          05 VALUE '------------------- *** LISTAR DADOS PESSOA FISICA
+      -     ' *** -------------' LINE 1 COL 1 FOREGROUND-COLOR IS 3.
+          05 LINE 3 COL 2 VALUE 'CNPJ DA EMPRESA: '
+           FOREGROUND-COLOR IS 2.
+          05 CNPJ-EMPRESA-INPUT LINE 3 COL 8 FOREGROUND-COLOR IS 7
+           FROM WS-CNPJ-ED.
 
        PROCEDURE DIVISION.
        0001-MAIN-PARA.
@@ -250,8 +291,8 @@
              EVALUATE WS-COMANDO
                      WHEN 1
                               PERFORM 0002-MENU-BUSCAR-PJ
-      *               WHEN 2
-      *                       DISPLAY 'BUSCAR PESSOA FÍSICA'
+                     WHEN 2
+                              PERFORM 0020-MENU-BUSCAR-PF
                      WHEN 'S'
                              MOVE ' ' TO WS-MENSAGEM
                      WHEN OTHER
@@ -269,12 +310,27 @@
            ACCEPT SC-BUSCAR-PJ
 
            IF RRE-CNPJ IS NOT EQUAL TO ZEROES THEN
-      *         DISPLAY 'TESTE'
               PERFORM 0004-BUSCAR-PJ-CNPJ
            ELSE
              IF RRE-RAZAO-SOCIAL IS NOT EQUAL TO SPACES THEN
-      *          DISPLAY 'TESTE'
                PERFORM 0005-BUSCAR-PJ-RAZAO
+             END-IF
+           END-IF.
+           DISPLAY SC-TELA-LIMPA.
+
+       0020-MENU-BUSCAR-PF.
+           INITIALIZE RRS-CNPJ.
+           INITIALIZE RRS-NOME-SOCIO.
+           DISPLAY SC-TELA-LIMPA.
+
+           DISPLAY SC-BUSCAR-PF
+           ACCEPT SC-BUSCAR-PF
+
+           IF RRS-CNPJ IS NOT EQUAL TO ZEROES THEN
+              PERFORM 0040-BUSCAR-PF-CNPJ
+           ELSE
+             IF RRS-NOME-SOCIO IS NOT EQUAL TO SPACES THEN
+               PERFORM 0050-BUSCAR-PF-NOME
              END-IF
            END-IF.
            DISPLAY SC-TELA-LIMPA.
@@ -362,6 +418,27 @@
            ACCEPT SC-REGUA-COMANDO.
            INITIALIZE REGISTRO-RFB-EMPRESA.
 
+       0030-EXIBIR-PF.
+      ***********************************************************   
+           DISPLAY SC-TELA-LIMPA.
+           DISPLAY SC-EXIBIR-PF.
+           DISPLAY SC-REGUA-COMANDO.
+           IF WS-CONTINUA-BUSCA IS EQUAL TO 'Y' THEN
+             MOVE '    *** PRESSIONE ENTER PARA CONTINUAR. V-VOLTAR ***'
+               TO WS-MENSAGEM
+           ELSE
+             MOVE '        *** FIM DA BUSCA, PRESSIONE ENTER PARA VOLTAR
+      -       '***' TO WS-MENSAGEM
+           END-IF
+           IF ST-ARQUIVO-SOC IS NOT EQUAL TO '00' THEN
+                   MOVE ST-ARQUIVO-SOC TO WS-MENSAGEM
+           END-IF.
+           DISPLAY SC-MENSAGEM.
+           
+           MOVE ' ' TO WS-COMANDO.
+           ACCEPT SC-REGUA-COMANDO.
+           INITIALIZE REGISTRO-RFB-SOCIO.
+
        0004-BUSCAR-PJ-CNPJ.
            OPEN INPUT ARQ-EMPRESAS.
            MOVE RRE-CNPJ TO FRE-CNPJ-ID.
@@ -380,7 +457,46 @@
            END-READ.
            CLOSE ARQ-EMPRESAS.
            PERFORM 0003-EXIBIR-PJ.
+       
+       0040-BUSCAR-PF-CNPJ.
+           OPEN INPUT ARQ-SOCIOS.
+           MOVE RRS-CNPJ TO WS-CNPJ-BUSCA.
+           MOVE WS-CNPJ-BUSCA TO FRS-CNPJ.
+           INITIALIZE REGISTRO-RFB-SOCIO.
 
+           START ARQ-SOCIOS
+             KEY IS EQUAL TO FRS-CNPJ
+             INVALID KEY PERFORM
+               MOVE 'N' TO WS-CONTINUA-BUSCA
+               MOVE '           *** NAO ENCONTRADO ***' TO
+                 RRS-NOME-SOCIO
+               MOVE '00' TO ST-ARQUIVO-SOC
+               PERFORM 0030-EXIBIR-PF
+             END-PERFORM
+             NOT INVALID KEY MOVE 'Y' TO WS-CONTINUA-BUSCA
+           END-START.
+
+           PERFORM UNTIL WS-CONTINUA-BUSCA IS EQUAL TO 'N'
+             READ ARQ-SOCIOS
+               AT END PERFORM
+                 MOVE 'N' TO WS-CONTINUA-BUSCA
+                 PERFORM 0030-EXIBIR-PF
+               END-PERFORM
+               NOT AT END PERFORM
+                 IF WS-CNPJ-BUSCA IS EQUAL TO FRS-CNPJ THEN
+                   MOVE FD-REG-SOCIO TO REGISTRO-RFB-SOCIO
+                 ELSE
+                   MOVE 'N' TO WS-CONTINUA-BUSCA
+                 END-IF
+                 PERFORM 0030-EXIBIR-PF
+                 IF WS-COMANDO IS EQUAL TO 'V' MOVE 'N' TO
+                         WS-CONTINUA-BUSCA
+               END-PERFORM
+             END-READ
+           END-PERFORM.
+           CLOSE ARQ-SOCIOS.
+           MOVE SPACES TO WS-COMANDO.
+       
        0005-BUSCAR-PJ-RAZAO.
            OPEN INPUT ARQ-EMPRESAS.
            MOVE FUNCTION UPPER-CASE(RRE-RAZAO-SOCIAL)
@@ -420,6 +536,45 @@
              END-READ
            END-PERFORM.
            CLOSE ARQ-EMPRESAS.
+           MOVE SPACES TO WS-COMANDO.
+       
+       0050-BUSCAR-PF-NOME.
+           OPEN INPUT ARQ-SOCIOS.
+           MOVE RRS-NOME-SOCIO TO WS-NOME-SOCIO-BUSCA.
+           MOVE WS-NOME-SOCIO-BUSCA TO FRS-NOME-SOCIO.
+           INITIALIZE REGISTRO-RFB-SOCIO.
+
+           START ARQ-SOCIOS
+             KEY IS EQUAL TO FRS-NOME-SOCIO
+             INVALID KEY PERFORM
+               MOVE 'N' TO WS-CONTINUA-BUSCA
+               MOVE '           *** NAO ENCONTRADO ***' TO
+                 RRS-NOME-SOCIO
+               MOVE '00' TO ST-ARQUIVO-SOC
+               PERFORM 0030-EXIBIR-PF
+             END-PERFORM
+             NOT INVALID KEY MOVE 'Y' TO WS-CONTINUA-BUSCA
+           END-START.
+
+           PERFORM UNTIL WS-CONTINUA-BUSCA IS EQUAL TO 'N'
+             READ ARQ-SOCIOS
+               AT END PERFORM
+                 MOVE 'N' TO WS-CONTINUA-BUSCA
+                 PERFORM 0030-EXIBIR-PF
+               END-PERFORM
+               NOT AT END PERFORM
+                 IF WS-NOME-SOCIO-BUSCA IS EQUAL TO FRS-NOME-SOCIO THEN
+                   MOVE FD-REG-SOCIO TO REGISTRO-RFB-SOCIO
+                 ELSE
+                   MOVE 'N' TO WS-CONTINUA-BUSCA
+                 END-IF
+                 PERFORM 0030-EXIBIR-PF
+                 IF WS-COMANDO IS EQUAL TO 'V' MOVE 'N' TO
+                         WS-CONTINUA-BUSCA
+               END-PERFORM
+             END-READ
+           END-PERFORM.
+           CLOSE ARQ-SOCIOS.
            MOVE SPACES TO WS-COMANDO.
 
        0006-BUSCAR-MOTIVO-SIT-CADASTRAL.
