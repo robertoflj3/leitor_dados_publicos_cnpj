@@ -1,39 +1,39 @@
-01EXTINÇÃO POR ENCERRAMENTO LIQUIDAÇÃO VOLUNTÁRIA                                         
-02INCORPORAÇÃO                                                                            
-03FUSÃO                                                                                   
-04CISÃO TOTAL                                                                             
-05ENCERRAMENTO DA FALÊNCIA                                                                
-06ENCERRAMENTO DA LIQUIDAÇÃO                                                              
-07ELEVAÇÃO A MATRIZ                                                                       
+01EXTINCAO POR ENCERRAMENTO LIQUIDACAO VOLUNTARIA                                         
+02INCORPORACAO                                                                            
+03FUSAO                                                                                   
+04CISAO TOTAL                                                                             
+05ENCERRAMENTO DA FALENCIA                                                                
+06ENCERRAMENTO DA LIQUIDACAO                                                              
+07ELEVACAO A MATRIZ                                                                       
 08TRANSPASSE                                                                              
-09NÃO INÍCIO DE ATIVIDADE                                                                 
-10EXTINÇÃO PELO ENCERRAMENTO DA LIQUIDAÇÃO JUDICIAL                                       
-11ANULAÇÃO POR MULTICIPLIDADE                                                             
-12ANULAÇÃO ONLINE DE OFICIO                                                               
+09NAO INICIO DE ATIVIDADE                                                                 
+10EXTINCAO PELO ENCERRAMENTO DA LIQUIDACAO JUDICIAL                                       
+11ANULACAO POR MULTICIPLIDADE                                                             
+12ANULACAO ONLINE DE OFICIO                                                               
 13OMISSA CONTUMAZ                                                                         
-14OMISSA NÃO LOCALIZADA                                                                   
+14OMISSA NAO LOCALIZADA                                                                   
 15INEXISTENTE DE FATO                                                                     
-16ANULAÇÃO POR VÍCIOS                                                                     
-17BAIXA INICIADA E AINDA NÃO DEFERIDA                                                     
-18INTERRUPÇÃO TEMPORÁRIA DAS ATIVIDADES                                                   
-19OMISSO DE DIRPJ ATÉ 5 EXERCÍCIOS                                                        
-20EM CONDIÇÃO DE INAPTIDÃO                                                                
+16ANULACAO POR VICIOS                                                                     
+17BAIXA INICIADA E AINDA NAO DEFERIDA                                                     
+18INTERRUPCAO TEMPORARIA DAS ATIVIDADES                                                   
+19OMISSO DE DIRPJ ATE 5 EXERCICIOS                                                        
+20EM CONDICAO DE INAPTIDAO                                                                
 21PEDIDO DE BAIXA INDEFERIDA                                                              
-22RESTABELECIMENTO COM CERTIDÃO POSITIVA COM EFEITO DE NEGATIVA                           
-23COM PENDÊNCIA FISCAL                                                                    
-24POR EMISSÃO CERTIDÃO NEGATIVA                                                           
-25CERTIDÃO POSITIVA COM EFEITO DE NEGATIVA                                                
+22RESTABELECIMENTO COM CERTIDAO POSITIVA COM EFEITO DE NEGATIVA                           
+23COM PENDENCIA FISCAL                                                                    
+24POR EMISSAO CERTIDAO NEGATIVA                                                           
+25CERTIDAO POSITIVA COM EFEITO DE NEGATIVA                                                
 26IRREGULARIDADE DE PAGAMENTO                                                             
 27IRREGULARIDADE DE RECOLHIMENTO E EXIGIBILIDADE SUSPENSA                                 
-28TRANSFERÊNCIA FILIAL CONDIÇÃO MATRIZ                                                 
+28TRANSFERENCIA FILIAL CONDICAO MATRIZ                                                 
 29AGUARDANDO CONF. DE DIRPJ/DIPJ                                                          
 30ANR - AGUARDANDO CONF. DE DIRPJ/DIPJ                                                    
-31EXTINÇÃO DA FILIAL                                                                      
+31EXTINCAO DA FILIAL                                                                      
 32INEXISTENTE DE FATO – ADE/COSAR                                                         
-33TRANSFERÊNCIA DO ÓRGÃO LOCAL A CONDIÇÃO DE FILIAL DO ÓRGÃO REGIONAL                     
-34ANULAÇÃO DE INSCRIÇÃO INDEVIDA                                                          
-35EMPRESA ESTRANGEIRA AGUARDANDO DOCUMENTAÇÃO                                             
-36PRÁTICA IRREGULAR DE OPERAÇÃO DE COMERCIO EXTERIOR                                      
+33TRANSFERENCIA DO ORGAO LOCAL A CONDICAO DE FILIAL DO ORGAO REGIONAL                     
+34ANULACAO DE INSCRICAO INDEVIDA                                                          
+35EMPRESA ESTRANGEIRA AGUARDANDO DOCUMENTACAO                                             
+36PRATICA IRREGULAR DE OPERACAO DE COMERCIO EXTERIOR                                      
 37BAIXA DE PRODUTOR RURAL                                                                 
 38BAIXA DEFERIDA PELA RFB AGUARDANDO ANALISE DO CONVENENTE                                
 39BAIXA DEFERIDA PELA RFB E INDEFERIDA PELO CONVENENTE                                    
@@ -56,13 +56,13 @@
 60ARTIGO 30                                                                               
 61INDICIO INTERPOS. FRAUDULENTA                                                           
 62FALTA DE PLURALIDADE DE SOCIOS                                                          
-63OMISSÃO DE DECLARAÇÕES                                                                  
-64LOCALIZAÇÃO DESCONHECIDA                                                                
-66INAPTIDÃO                                                                               
+63OMISSAO DE DECLARACOES                                                                  
+64LOCALIZACAO DESCONHECIDA                                                                
+66INAPTIDAO                                                                               
 67REGISTRO CANCELADO                                                                      
-70ANULAÇÃO POR NÃO CONFIRMADO ATO DE REGISTRO DO MEI NA JUNTA COMERCIAL                   
-71INAPTIDÃO (LEI 11.941/2009 ART.54)                                                      
-72DETERMINAÇÃO JUDICIAL                                                                   
-73OMISSÃO CONTUMAZ                                                                        
-74INCONSISTÊNCIA CADASTRAL                                                                
+70ANULACAO POR NAO CONFIRMADO ATO DE REGISTRO DO MEI NA JUNTA COMERCIAL                   
+71INAPTIDAO (LEI 11.941/2009 ART.54)                                                      
+72DETERMINACAO JUDICIAL                                                                   
+73OMISSAO CONTUMAZ                                                                        
+74INCONSISTENCIA CADASTRAL                                                                
 80BAIXA REGISTRADA NA JUNTA                                                               
