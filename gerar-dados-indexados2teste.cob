@@ -20,8 +20,8 @@
                    RECORD KEY IS FRE-CNPJ
                    ALTERNATE KEY IS FRE-RAZAO-SOCIAL WITH DUPLICATES
                    STATUS ST-ARQUIVO-EMP.
-				   
-		   SELECT ARQ-CNAE ASSIGN TO "dados/cnae2teste.dat"
+
+           SELECT ARQ-CNAE ASSIGN TO "dados/cnae2teste.dat"
                    ORGANIZATION INDEXED
                    ACCESS MODE DYNAMIC
                    RECORD KEY IS FRC-CNPJ
@@ -117,9 +117,9 @@
 
        FD ARQ-EMPRESAS.
        COPY "FD-REG-EMPRESA.cpy".
-	   
-	   FD ARQ-CNAE.
-	   COPY "FD-REG-CNAE.cpy".
+        	   
+       FD ARQ-CNAE.
+       COPY "FD-REG-CNAE.cpy".
 
        FD ARQ1.
        01 FD-REG-ARQ1.
@@ -187,7 +187,7 @@
        01 ST-ARQUIVO-SOC              PIC XX.
        01 ST-ARQUIVO-LOTE             PIC XX.
        01 ST-ARQUIVO-EMP              PIC XX.
-	   01 ST-ARQUIVO-CNAE             PIC XX.
+       01 ST-ARQUIVO-CNAE             PIC XX.
        01 WS-EOF                      PIC X VALUE 'N'.
        01 WS-COD-SOCIO                PIC 9(011) VALUE 1.
        01 WS-PASSO-ARQUIVO            PIC 9 VALUE 0.
@@ -195,7 +195,7 @@
        COPY "REGISTRO-RFB.cpy".
        COPY "REGISTRO-RFB-SOCIO.cpy".
        COPY "REGISTRO-RFB-EMPRESA.cpy".
-	   COPY "REGISTRO-RFB-CNAE.cpy".
+       COPY "REGISTRO-RFB-CNAE.cpy".
 
        PROCEDURE DIVISION.
        0001-MAIN-PARA.
@@ -248,7 +248,7 @@
                    MOVE REGISTRO-RFB TO REGISTRO-RFB-EMPRESA
                    PERFORM 0005-GRAVAR-REGISTRO-EMPRESA
            END-IF.
-		   IF RRF-TIPO-REGISTRO IS EQUAL TO 6 AND WS-PASSO-ARQUIVO IS
+           IF RRF-TIPO-REGISTRO IS EQUAL TO 6 AND WS-PASSO-ARQUIVO IS
                    EQUAL TO 3 THEN
                    MOVE REGISTRO-RFB TO REGISTRO-RFB-CNAE
                    PERFORM 0006-GRAVAR-REGISTRO-CNAE
@@ -261,6 +261,6 @@
        0005-GRAVAR-REGISTRO-EMPRESA.
            MOVE REGISTRO-RFB-EMPRESA TO FD-REG-EMPRESA.
            WRITE FD-REG-EMPRESA.
-	   0006-GRAVAR-REGISTRO-CNAE.
+       0006-GRAVAR-REGISTRO-CNAE.
            MOVE REGISTRO-RFB-CNAE TO FD-REG-CNAE.
            WRITE FD-REG-CNAE.
