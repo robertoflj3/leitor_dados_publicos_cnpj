@@ -24,9 +24,9 @@
 		   SELECT ARQ-CNAE ASSIGN TO "dados/cnae2teste.dat"
                    ORGANIZATION INDEXED
                    ACCESS MODE DYNAMIC
-                   RECORD KEY IS FRC-COD-CNAE
+                   RECORD KEY IS FRC-CNPJ
                    ALTERNATE RECORD KEY IS
-                     FRC-CNPJ WITH DUPLICATES
+                     FRC-CNAE-SECUNDARIA WITH DUPLICATES
                    STATUS ST-ARQUIVO-CNAE.
 
            SELECT ARQ1 ASSIGN TO "dados/K3241.K03200DV.D00124.L00001"
@@ -189,8 +189,7 @@
        01 ST-ARQUIVO-EMP              PIC XX.
 	   01 ST-ARQUIVO-CNAE             PIC XX.
        01 WS-EOF                      PIC X VALUE 'N'.
-       01 WS-COD-SOCIO                PIC 9(011) VALUE 1.    
-	   01 WS-COD-CNAE                 PIC 9(011) VALUE 1.
+       01 WS-COD-SOCIO                PIC 9(011) VALUE 1.
        01 WS-PASSO-ARQUIVO            PIC 9 VALUE 0.
 
        COPY "REGISTRO-RFB.cpy".
@@ -263,7 +262,5 @@
            MOVE REGISTRO-RFB-EMPRESA TO FD-REG-EMPRESA.
            WRITE FD-REG-EMPRESA.
 	   0006-GRAVAR-REGISTRO-CNAE.
-           MOVE WS-COD-CNAE TO RRC-COD-CNAE.
            MOVE REGISTRO-RFB-CNAE TO FD-REG-CNAE.
            WRITE FD-REG-CNAE.
-           ADD 1 WS-COD-CNAE GIVING WS-COD-CNAE.
