@@ -203,16 +203,20 @@
            PERFORM 0002-ABRIR-ARQUIVO.
            GOBACK.
        0002-ABRIR-ARQUIVO.
-           PERFORM 2 TIMES
+           PERFORM 3 TIMES
              ADD 1 TO WS-PASSO-ARQUIVO GIVING WS-PASSO-ARQUIVO
 
              IF WS-PASSO-ARQUIVO IS EQUAL TO 1 THEN
-                     DISPLAY 'EXECUTANDO PASSO 1/2 - EMPRESAS'
+                     DISPLAY 'EXECUTANDO PASSO 1/3 - EMPRESAS'
                      OPEN OUTPUT ARQ-EMPRESAS
              END-IF
              IF WS-PASSO-ARQUIVO IS EQUAL TO 2 THEN
-                     DISPLAY 'EXECUTANDO PASSO 2/2 - SOCIOS'
+                     DISPLAY 'EXECUTANDO PASSO 2/3 - SOCIOS'
                      OPEN OUTPUT ARQ-SOCIOS
+             END-IF
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 3 THEN
+                     DISPLAY 'EXECUTANDO PASSO 3/3 - CNAES'
+                     OPEN OUTPUT ARQ-CNAE
              END-IF
 
              MOVE 'N' TO WS-EOF
@@ -234,6 +238,9 @@
              END-IF
              IF WS-PASSO-ARQUIVO IS EQUAL TO 2 THEN
                      CLOSE ARQ-SOCIOS
+             END-IF
+             IF WS-PASSO-ARQUIVO IS EQUAL TO 3 THEN
+                     CLOSE ARQ-CNAE
              END-IF
            END-PERFORM
            DISPLAY 'FIM DA GERACAO DOS ARQUIVOS.'.
