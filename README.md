@@ -1,4 +1,4 @@
-# Leitor de dados publicos CNPJ
+# [Not longer maintened] Leitor de dados publicos CNPJ
 Leitor de dados públicos da Receita Federal do Brasil em COBOL
 
 O que o aplicativo faz:
